@@ -6,7 +6,31 @@
 注意：后端的minio依赖版本是8.5.17，不同的版本api有差异，主要是学习实现思路\
 ## 实现思路
 ### 分片上传
-![img.png](images/img.png)
+```mermaid
+sequenceDiagram
+    participant c as client 
+    participant s as server
+    participant m as MinIO
+    participant d as database
+    activate  c
+    c ->>+ s: 根据文件唯一标识查询上传任务
+    s ->>+ d: 查询任务
+    d -->>- s: null
+    s -->>- c: null
+    c ->>+ s: 创建上传任务
+    s ->>+ m: 创建上传任务
+    m -->>- s: 上传任务ID
+    s ->> + d: 保存上传任务信息
+    s -->> - c: 上传任务信息
+    c ->> + s: 获取分片上传地址
+    s ->> + m: 获取分片上传地址
+    m -->> - s: 上传地址
+    s -->>- c: 上传地址
+    c ->> + m: 上传分片文件
+    c ->> + s: 合并分片
+    s ->> + m: 合并分片
+    deactivate c
+```
 ### 秒传
 秒传功能是指在文件上传之前，后端会根据文件的MD5值查询数据库，如果存在则直接返回文件的URL，这样就实现了秒传功能
 ### 断点续传
