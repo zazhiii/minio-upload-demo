@@ -2,6 +2,8 @@
 CREATE DATABASE IF NOT EXISTS `minio_upload_demo`
 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
+USE minio_upload_demo;
+
 -- 创建表
 DROP TABLE IF EXISTS `upload_task`;
 -- auto-generated definition
@@ -16,6 +18,5 @@ create table upload_task
     total_size      mediumtext   not null comment '文件大小（byte）',
     chunk_size      mediumtext   not null comment '每个分片大小（byte）',
     chunk_num       int          null comment '分片数量'
-)
-    comment '分片上传任务';
+) comment '分片上传任务';
 

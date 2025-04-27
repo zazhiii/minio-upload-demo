@@ -155,6 +155,7 @@ public class UploadServiceImpl implements UploadService {
             ).get().result().partList();
         } catch (Exception e) {
             throw new RuntimeException("获取上传进度失败");
+            // TODO fix MinIO删除文件，但数据库任务没有删除导致异常
         }
         taskInfoVO.setFinished(false);
         taskInfoVO.setParts(parts);

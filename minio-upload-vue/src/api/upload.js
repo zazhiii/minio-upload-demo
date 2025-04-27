@@ -25,9 +25,21 @@ const merge = (identifier) => {
     return _axios.post(`api/upload/merge/${identifier}`)
 }
 
+const uploadSlice = (slice, url) => {
+    return _axios.request({
+        url,
+        method: "PUT",
+        data: slice,
+        headers: {
+            "Content-Type": "application/octet-stream"
+        }
+    })
+}
+
 export{
     initTask,
     getPresignedObjectUrl,
     getTaskInfo,
-    merge
+    merge,
+    uploadSlice
 }

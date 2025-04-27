@@ -1,12 +1,6 @@
 spring:
   application:
     name: minio-upload-api
-#  datasource:
-#    type: com.zaxxer.hikari.HikariDataSource
-#    driver-class-name: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://localhost:3306/minio_upload_demo?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
-#    username: root
-#    password: 123456
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/minio_upload_demo
@@ -22,8 +16,8 @@ mybatis:
 minio:
   endpoint: http://localhost:9000
   bucketName: minio-upload-demo # 桶名称
-  accessKey: YtDznxVyGgplz9qXl5bw
-  accessSecret: K4N9YbIUHifTm5ABkMWHidp8QN8YmYn7RmlsYSBz
+  accessKey: hOuCmQPVDYheb8yMqDyx
+  accessSecret: BPCb233b3kTWIbx752b125LbleDvG0WxRZ5UgVbL
 
 springdoc:
   swagger-ui:
